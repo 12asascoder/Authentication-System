@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Profile</h1>
+        
+        <% if (user) { %>
+            <p><strong>Username:</strong> <%= user.username %></p>
+            <p><strong>Email:</strong> <%= user.email %></p>
+        <% } else { %>
+            <p>You are not logged in. <a href="/login">Login</a> to view your profile.</p>
+        <% } %>
+
+        <a href="/" class="btn">Home</a>
+        <form action="/logout" method="POST">
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            <button type="submit" class="btn">Logout</button>
+        </form>
+    </div>
+</body>
+</html>
